@@ -234,6 +234,16 @@ module Pod
         current_target_definition.store_pod(name, *requirements)
       end
 
+      # only for swift project
+      # custom addition
+      def static_pod(name = nil, *requirements)
+        unless name
+          raise StandardError, 'A dependency requires a name.'
+        end
+
+        current_target_definition.store_static_pod(name, *requirements)
+      end
+
       # Use just the dependencies of a Pod defined in the given podspec file.
       # If no arguments are passed the first podspec in the root of the Podfile
       # is used. It is intended to be used by the project of a library. Note:

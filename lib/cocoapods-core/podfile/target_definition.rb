@@ -534,7 +534,24 @@ module Pod
         parse_configuration_whitelist(name, requirements)
 
         if requirements && !requirements.empty?
-          pod = { name => requirements }
+          pod = { name => requirements, :force_static => false }
+        else
+          pod = name
+        end
+
+        get_hash_value('dependencies', []) << pod
+        nil
+      end
+
+      # only for swift project
+      # custom addition
+      def store_static_pod(name, *requirements)
+        return if parse_subspecs(name, requirements) # This parse method must be called first
+        parse_inhibit_warnings(name, requirements)
+        parse_configuration_whitelist(name, requirements)
+
+        if requirements && !requirements.empty?
+          pod = { name => requirements, :force_static => true}
         else
           pod = name
         end
