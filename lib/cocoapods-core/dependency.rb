@@ -24,6 +24,8 @@ module Pod
     #         should be used to resolve the dependency.
     attr_accessor :podspec_repo
 
+    attr_accessor :force_static
+
     # @overload   initialize(name, requirements)
     #
     #   @param    [String] name
@@ -83,7 +85,8 @@ module Pod
     #
     #             Dependency.new('RestKit', :head)
     #
-    def initialize(name = nil, *requirements)
+    def initialize(name = nil, force_static = false, *requirements)
+      @force_static = force_static
       if requirements.last.is_a?(Hash)
         additional_params = requirements.pop.select { |_, v| !v.nil? }
         additional_params = nil if additional_params.empty?
@@ -326,6 +329,7 @@ module Pod
       end
       result = @name.dup
       result << " (#{version})" unless version.empty?
+      result << " #{@force_static ? 'force_static' : ''}"
       result
     end
 

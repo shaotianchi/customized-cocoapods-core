@@ -764,7 +764,8 @@ module Pod
           if name_or_hash.is_a?(Hash)
             name = name_or_hash.keys.first
             requirements = name_or_hash.values.first
-            Dependency.new(name, *requirements)
+            force_static = name_or_hash[:force_static]
+            Dependency.new(name, force_static, *requirements)
           else
             Dependency.new(name_or_hash)
           end
