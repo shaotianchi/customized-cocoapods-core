@@ -1,3 +1,4 @@
+
 # CocoaPods Core
 
 [![Build Status](https://img.shields.io/travis/CocoaPods/Core/master.svg?style=flat)](https://travis-ci.org/CocoaPods/Core)
@@ -43,3 +44,9 @@ information about what's going on in the CocoaPods world.
 ## License
 
 This gem and CocoaPods are available under the MIT license.
+
+# customized-cocoapods-core
+customized-cocoapods-core 1.2.1
+
+
+
