@@ -329,7 +329,7 @@ module Pod
       end
       result = @name.dup
       result << " (#{version})" unless version.empty?
-      result << " #{@force_static ? 'force_static' : ''}"
+      # result << " #{@force_static ? 'force_static' : ''}"
       result
     end
 
